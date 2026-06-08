@@ -68,9 +68,11 @@ describe("OpenAI adapter", () => {
     expect(JSON.parse(String(init?.body))).toMatchObject({
       model: "gpt-4o-mini-tts",
       voice: "alloy",
-      input: baseRequest.text
+      input: baseRequest.text,
+      instructions: expect.stringContaining("Hong Kong Cantonese")
     });
     expect(result.mimeType).toBe("audio/mpeg");
+    expect(result.metadata.cantoneseInstructionsUsed).toBe(true);
   });
 });
 
@@ -98,6 +100,9 @@ describe("ElevenLabs adapter", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(String(fetchMock.mock.calls[0][0])).toContain("/text-to-speech/abc123");
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body))).toMatchObject({
+      language_code: "zh"
+    });
     expect(result.metadata.referenceAudioUsed).toBe(false);
   });
 

@@ -226,6 +226,10 @@ textarea {
   resize: vertical;
 }
 
+.setting-textarea {
+  min-height: 112px;
+}
+
 .editor-footer {
   margin-top: 10px;
 }

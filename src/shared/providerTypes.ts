@@ -18,7 +18,7 @@ export interface SettingOption {
 export interface ProviderSetting {
   key: string;
   label: string;
-  type: "text" | "select" | "number";
+  type: "text" | "textarea" | "select" | "number";
   required?: boolean;
   placeholder?: string;
   defaultValue?: string | number;

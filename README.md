@@ -35,5 +35,6 @@ npm start         # run compiled API/server after build
 ## Provider Notes
 
 - **ElevenLabs**: Use an existing `voiceId` when possible. If reference audio is provided without a voice ID, the server uses ElevenLabs IVC voice creation and then tries to delete the temporary voice.
-- **OpenAI**: Preset-voice TTS backend. This adapter does not accept uploaded reference audio.
+- **OpenAI**: Preset-voice TTS backend. The `gpt-4o-mini-tts` option sends a Cantonese direction prompt through the speech API `instructions` field. This adapter does not accept uploaded reference audio.
+- **ElevenLabs language code**: The app sends `zh` by default because the ElevenLabs API exposes Chinese language steering, not a dedicated Cantonese `yue-HK` option.
 - Cantonese quality is provider-specific. The UI warns when a provider may read `zh-HK` text with a Mandarin-like accent.

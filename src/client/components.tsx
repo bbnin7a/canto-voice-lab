@@ -32,6 +32,13 @@ export function SettingInput({
             </option>
           ))}
         </select>
+      ) : setting.type === "textarea" ? (
+        <textarea
+          className="setting-textarea"
+          onChange={(event) => onChange(event.target.value)}
+          placeholder={setting.placeholder}
+          value={value ?? ""}
+        />
       ) : (
         <input
           min={setting.min}

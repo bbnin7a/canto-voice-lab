@@ -38,6 +38,16 @@ export const elevenLabsMetadata: ProviderMetadata = {
       ]
     },
     {
+      key: "languageCode",
+      label: "Language code",
+      type: "select",
+      defaultValue: "zh",
+      options: [
+        { value: "zh", label: "Chinese (zh)" },
+        { value: "", label: "Auto-detect" }
+      ]
+    },
+    {
       key: "voiceId",
       label: "Voice ID",
       type: "text",
@@ -70,6 +80,7 @@ export const elevenLabsProvider: TtsProvider = {
     assertBaseRequest(request);
 
     const model = getStringSetting(request, "model", "eleven_multilingual_v2");
+    const languageCode = getStringSetting(request, "languageCode", "zh");
     const providedVoiceId = getStringSetting(request, "voiceId", "");
     let voiceId = providedVoiceId;
     let temporaryVoiceId: string | undefined;
@@ -99,6 +110,7 @@ export const elevenLabsProvider: TtsProvider = {
           body: JSON.stringify({
             text: request.text,
             model_id: model,
+            ...(languageCode ? { language_code: languageCode } : {}),
             voice_settings: {
               stability,
               similarity_boost: similarityBoost
@@ -115,6 +127,7 @@ export const elevenLabsProvider: TtsProvider = {
         fileName: "elevenlabs-cantonese-tts.mp3",
         metadata: {
           model,
+          languageCode: languageCode || "auto",
           voiceId,
           language: request.language,
           referenceAudioUsed: Boolean(request.referenceAudio),
