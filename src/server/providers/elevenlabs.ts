@@ -1,12 +1,12 @@
-import type { ProviderMetadata, TtsRequestBody } from "../../shared/providerTypes.js";
+import type { ProviderMetadata, TtsRequestBody } from "../../shared/providerTypes";
 import {
   assertBaseRequest,
   assertOk,
   decodeReferenceAudio,
   getNumberSetting,
   getStringSetting
-} from "./common.js";
-import { ProviderValidationError, type TtsProvider, type TtsResult } from "./types.js";
+} from "./common";
+import { ProviderValidationError, type TtsProvider, type TtsResult } from "./types";
 
 const ELEVENLABS_BASE_URL = "https://api.elevenlabs.io/v1";
 

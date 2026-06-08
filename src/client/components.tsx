@@ -1,4 +1,5 @@
 import { Download, History, Star, Trash2 } from "lucide-react";
+import React from "react";
 import type { ReactNode } from "react";
 import type { ProviderSetting } from "../shared/providerTypes";
 import type { QualityRun } from "./appTypes";

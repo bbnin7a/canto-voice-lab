@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for improving Canto Voice Lab. The project is intentionally small: a React client, a local Express API, and provider adapters for speech services.
+Thanks for improving Canto Voice Lab. The project is intentionally small: a Next.js app, API route handlers, and provider adapters for speech services.
 
 ## Local Development
 

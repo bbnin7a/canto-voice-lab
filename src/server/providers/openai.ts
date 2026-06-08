@@ -1,6 +1,6 @@
-import type { ProviderMetadata } from "../../shared/providerTypes.js";
-import { assertBaseRequest, assertOk, getStringSetting } from "./common.js";
-import { ProviderValidationError, type TtsProvider, type TtsResult } from "./types.js";
+import type { ProviderMetadata } from "../../shared/providerTypes";
+import { assertBaseRequest, assertOk, getStringSetting } from "./common";
+import { ProviderValidationError, type TtsProvider, type TtsResult } from "./types";
 
 const DEFAULT_CANTONESE_INSTRUCTIONS =
   "Speak the input as natural Hong Kong Cantonese, not Mandarin. Use Cantonese pronunciations for Chinese characters, keep colloquial particles such as 嘅, 咗, 唔, 佢, 喺, and use a conversational Hong Kong rhythm.";

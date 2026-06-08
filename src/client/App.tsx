@@ -1,4 +1,7 @@
+"use client";
+
 import { Download, KeyRound, Loader2, Mic, Play, ShieldCheck, Wand2, Volume2 } from "lucide-react";
+import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ProviderId, ProviderMetadata, ReferenceAudioPayload, TtsResponse } from "../shared/providerTypes";
 import type { QualityRun, StorageMode } from "./appTypes";
@@ -6,9 +9,9 @@ import { base64ToBlob, createRunId, fileToBase64, summarizeSettings } from "./au
 import { DEFAULT_TEXT } from "./cantoneseSamples";
 import { PanelTitle, QualityReview, SettingInput } from "./components";
 
-export function App() {
-  const [providers, setProviders] = useState<ProviderMetadata[]>([]);
-  const [providerId, setProviderId] = useState<ProviderId>("elevenlabs");
+export function App({ initialProviders = [] }: { initialProviders?: ProviderMetadata[] }) {
+  const [providers, setProviders] = useState<ProviderMetadata[]>(initialProviders);
+  const [providerId, setProviderId] = useState<ProviderId>(initialProviders[0]?.id ?? "elevenlabs");
   const [apiKey, setApiKey] = useState("");
   const [storageMode, setStorageMode] = useState<StorageMode>("session");
   const [text, setText] = useState(DEFAULT_TEXT);
@@ -38,12 +41,12 @@ export function App() {
       .then((payload: { providers: ProviderMetadata[] }) => {
         setProviders(payload.providers);
         const firstProvider = payload.providers[0];
-        if (firstProvider) {
+        if (firstProvider && !payload.providers.some((provider) => provider.id === providerId)) {
           setProviderId(firstProvider.id);
         }
       })
-      .catch(() => setError("Could not reach the local API server. Run npm run dev."));
-  }, []);
+      .catch(() => setError("Could not reach the API. Check the deployment or run npm run dev locally."));
+  }, [providerId]);
 
   const selectedProvider = useMemo(
     () => providers.find((provider) => provider.id === providerId),

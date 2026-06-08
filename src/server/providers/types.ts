@@ -1,4 +1,4 @@
-import type { ProviderMetadata, TtsRequestBody } from "../../shared/providerTypes.js";
+import type { ProviderMetadata, TtsRequestBody } from "../../shared/providerTypes";
 
 export interface TtsResult {
   audio: ArrayBuffer;

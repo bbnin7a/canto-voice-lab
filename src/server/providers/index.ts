@@ -1,7 +1,7 @@
-import { elevenLabsProvider } from "./elevenlabs.js";
-import { openAiProvider } from "./openai.js";
-import type { TtsProvider } from "./types.js";
-import type { ProviderId } from "../../shared/providerTypes.js";
+import { elevenLabsProvider } from "./elevenlabs";
+import { openAiProvider } from "./openai";
+import type { TtsProvider } from "./types";
+import type { ProviderId } from "../../shared/providerTypes";
 
 const providers = new Map<ProviderId, TtsProvider>([
   [elevenLabsProvider.metadata.id, elevenLabsProvider],

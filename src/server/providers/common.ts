@@ -1,5 +1,5 @@
-import { ProviderApiError, ProviderValidationError } from "./types.js";
-import type { TtsRequestBody } from "../../shared/providerTypes.js";
+import { ProviderApiError, ProviderValidationError } from "./types";
+import type { TtsRequestBody } from "../../shared/providerTypes";
 
 const MAX_REFERENCE_AUDIO_BYTES = 20 * 1024 * 1024;
 const SUPPORTED_REFERENCE_AUDIO_TYPES = new Set([
